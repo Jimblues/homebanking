@@ -1,19 +1,19 @@
-package com.example.homebanking.entity;
+package com.example.homebanking.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import java.time.LocalDate;
+import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private int number;
-    private LocalDate creationDate;
-    private float balance;
+    private String number;
+    private LocalDateTime creationDate;
+    private double balance;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "client_id")
+    private Client client;
 
     public Account() {
     }
@@ -26,28 +26,36 @@ public class Account {
         this.id = id;
     }
 
-    public int getNumber() {
+    public String getNumber() {
         return number;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(String number) {
         this.number = number;
     }
 
-    public LocalDate getCreationDate() {
+    public LocalDateTime getCreationDate() {
         return creationDate;
     }
 
-    public void setCreationDate(LocalDate creationDate) {
+    public void setCreationDate(LocalDateTime creationDate) {
         this.creationDate = creationDate;
     }
 
-    public float getBalance() {
+    public double getBalance() {
         return balance;
     }
 
-    public void setBalance(float balance) {
+    public void setBalance(double balance) {
         this.balance = balance;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
     }
 
     @Override
