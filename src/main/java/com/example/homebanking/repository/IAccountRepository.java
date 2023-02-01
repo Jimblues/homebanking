@@ -1,6 +1,6 @@
 package com.example.homebanking.repository;
 
-import com.example.homebanking.entity.Account;
+import com.example.homebanking.models.Account;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
