@@ -51,10 +51,10 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="cliente in clients">
-                            <td>{{cliente.firstName}}</td>
-                            <td>{{cliente.lastName}}</td>
-                            <td>{{cliente.email }}</td>
+                        <tr v-for="client in clients">
+                            <td>{{client.firstName}}</td>
+                            <td>{{client.lastName}}</td>
+                            <td>{{client.email }}</td>
                             <td>
                                 <button type="button" class="btn btn-success" data-bs-toggle="modal"
                                     data-bs-target="#editForm" @click="capturarCliente(cliente)">
@@ -63,7 +63,7 @@
                             </td>
                             <td>
                                 <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                    data-bs-target="#deleteForm" @click="capturarCliente(cliente)">
+                                    data-bs-target="#deleteForm" @click="capturarCliente(client)">
                                     <i class="fa-solid fa-user-xmark"></i>
                                 </button>
                             </td>
