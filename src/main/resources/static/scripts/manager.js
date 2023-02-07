@@ -18,7 +18,7 @@ Vue.createApp({
     },
 
     created() {
-        axios.get('http://localhost:8080/clients')
+        axios.get('http://localhost:8080/rest/clients')
             .then(datos => {
                 this.clients = datos.data._embedded.clients
                 // this.clients = datos.data._embedded.clients
