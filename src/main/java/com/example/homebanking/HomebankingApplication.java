@@ -31,11 +31,13 @@ public class HomebankingApplication {
 			Account account2 = new Account("VIN002",LocalDateTime.now().plusDays(1),7000,client1);
 			Account account3 = new Account("VIN003",LocalDateTime.now(),6000,client2);
 
-			Transaction transaction1 = new Transaction(TransactionType.DEBITO,500,"",LocalDateTime.now(),account1);
-			Transaction transaction2 = new Transaction(TransactionType.DEBITO, 600, "",LocalDateTime.now(),account1);
-			Transaction transaction3 = new Transaction(TransactionType.CREDITO,900,"",LocalDateTime.now(),account2);
-			Transaction transaction4 = new Transaction(TransactionType.DEBITO,800,"",LocalDateTime.now(),account3);
-
+			Transaction transaction1 = new Transaction(TransactionType.DEBITO,500,"Teclado",LocalDateTime.now(),account1);
+			Transaction transaction2 = new Transaction(TransactionType.DEBITO, 600, "Mouse",LocalDateTime.now(),account1);
+			Transaction transaction3 = new Transaction(TransactionType.CREDITO,900,"Pendrive",LocalDateTime.now(),account2);
+			Transaction transaction4 = new Transaction(TransactionType.DEBITO,800,"Parlantes",LocalDateTime.now(),account3);
+			Transaction transaction5 = new Transaction(TransactionType.CREDITO,1000,"Pilas",LocalDateTime.now(),account2);
+			Transaction transaction6 = new Transaction(TransactionType.CREDITO,1200,"Auriculares",LocalDateTime.now(),account3);
+			Transaction transaction7 = new Transaction(TransactionType.DEBITO,750,"Funda Notebook",LocalDateTime.now(),account2);
 
 			clientService.saveClient(client1);
 			clientService.saveClient(client2);
@@ -46,6 +48,10 @@ public class HomebankingApplication {
 			transactionService.saveTransaction(transaction2);
 			transactionService.saveTransaction(transaction3);
 			transactionService.saveTransaction(transaction4);
+			transactionService.saveTransaction(transaction5);
+			transactionService.saveTransaction(transaction6);
+			transactionService.saveTransaction(transaction7);
+
 		};
 	}
 
