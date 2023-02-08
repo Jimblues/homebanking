@@ -2,38 +2,31 @@ Vue.createApp({
     data() {
         return {
             message: 'Hello Vue!',
-            accounts: [],
             account: {},
-            urlAccountSelected: "",
-            accountSelected: {},
-            contenidoJson: [],
             transactions:{}
-
-            number: "",
-            creationData: "",
-            balance: "",
-            client: ""
         }
     },
-
     created() {
-        axios.get('http://localhost:8080/rest/accounts')
-            .then(datos => {
-                this.accounts = datos.data._embedded.accounts
-                this.contenidoJson = datos.data
-                console.log(this.accounts)
-            })
-        axios.get('http://localhost:8080/rest/transactions')
-        .the(datos => {
-            this.transactions = datos.data._embedded.transactions
-            this.contenidoJson = datos.data
-            console.log(this.transactions)
-        })
+        const urlParams = new URLSearchParams(window.location.search);
+        const idAccount = urlParams.get('id');
+
+        axios.get('http://localhost:8080/api/accounts/'+idAccount)
+            .then(data => {
+                this.account = data.data
+                this.transactions = data.data.transactions
+                this.sortTransactions()
+                console.log(this.transactions)
+            });
+
     },
     methods: {
-        captureAccount(account) {
-            this.accountSelected = account;
-            this.urlAccountSelected = account._links.client.href;
+        formatDate(dateInput) {
+            const date = new Date(dateInput)
+            return (date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear() + " " +
+                            date.getHours() + ":" + (date.getMinutes() > 9 ? date.getMinutes() : "0" + date.getMinutes()))
+        },
+        sortTransactions(){
+          this.transactions.sort((a,b) => b.id - a.id)
         },
     },
     computed: {},
