@@ -9,7 +9,7 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://kit.fontawesome.com/23209d6861.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./styles/styleAccount.css">
-    <title>Title</title>
+    <title>Account</title>
 </head>
 <body>
   <div id="app">
@@ -28,14 +28,16 @@
                     </thead>
                     <tbody>
                         <tr v-for="transaction in transactions">
-                            <td>{{transaction.type}}</td>
+                            <td v-if="transaction.type=='CREDITO'" class="colorTransaction" style="--bg:green">{{transaction.type}}</td>
+                            <td v-else class="colorTransaction" style="--bg:red">{{transaction.type}}</td>
                             <td>{{transaction.amount}}</td>
                             <td>{{transaction.description}}</td>
-                            <td>{{transaction.date}}</td>
+                            <td>{{formatDate(transaction.date)}}</td>
                         </tr>
                     </tbody>
                   </table>
               </section>
+              <a href="./accounts.html"><-back</a>
           </div>
       </div>
   </div>
