@@ -2,6 +2,7 @@ package com.example.homebanking.dto;
 
 import com.example.homebanking.models.Account;
 import com.example.homebanking.models.Client;
+import com.example.homebanking.models.Transaction;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;
@@ -21,6 +22,7 @@ public class AccountDTO {
         this.creationDate = account.getCreationDate();
         this.balance = account.getBalance();
         this.transactions = account.getTransactions().stream().map(TransactionDTO::new).collect(Collectors.toSet());
+
     }
 
     public long getId() {
