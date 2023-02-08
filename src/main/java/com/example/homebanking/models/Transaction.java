@@ -67,7 +67,7 @@ public class Transaction {
     public void setDate(LocalDateTime date) {
         this.date = date;
     }
-    @JsonIgnore
+
     public Account getAccount() {
         return account;
     }
